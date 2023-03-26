@@ -103,8 +103,16 @@ function zeroAEsquerda(num) {
   return num >= 10 ? num : `0${num}`;
 }
 function getDiaSemana(dia) {
-  const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]
-  return diasSemana[dia]
+  const diasSemana = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ];
+  return diasSemana[dia];
 }
 function getNomeMes(nomeMes) {
   const meses = [
