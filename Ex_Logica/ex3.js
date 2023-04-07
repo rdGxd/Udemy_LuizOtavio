@@ -9,8 +9,8 @@ Use a função com números de 0 a 100
 */
 
 
-// Minha Solução
 /*
+// Minha Solução
 function fizzBuzz(number) {
   const number1 = Number(number);
   if (!number1) {
