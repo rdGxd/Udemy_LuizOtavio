@@ -1,58 +1,79 @@
 /*
-//Solução INTERNET
+// Minha Solução
 const relogio = document.querySelector(".relogio");
 const iniciar = document.querySelector(".iniciar");
 const pausar = document.querySelector(".pausar");
 const zerar = document.querySelector(".zerar");
-
-let contadorSegundos = 0;
-let contadorMinutos = 0;
-let contadorHoras = 0;
-
-function formataSegundos(segundos) {
-  if (segundos <= 9) {
-    return `0${segundos}`;
-  } else {
-    return segundos;
-  }
-}
+let segundo = 0;
+let hora = 0;
+let minuto = 0;
+let contador;
 
 iniciar.addEventListener("click", () => {
   relogio.classList.remove("pausado");
-  const crono = setInterval(() => {
-    contadorSegundos += 1;
-    const segundin = formataSegundos(contadorSegundos);
-    const minutin = formataSegundos(contadorMinutos);
-    const horinhas = formataSegundos(contadorHoras);
-    if (contadorSegundos >= 59) {
-      contadorSegundos = 0;
-      contadorMinutos += 1;
-    }
-    if (contadorMinutos >= 59) {
-      contadorMinutos = 0;
-      contadorHoras = 1;
-    }
-    relogio.textContent = `${horinhas}:${minutin}:${segundin}`;
-  }, 1000);
-  paraContador(crono);
-  zerarContador(crono);
+  clearInterval(contador);
+  timer();
 });
 
-function paraContador(para) {
+function timer() {
+  contador = setInterval(() => {
+    segundo++;
+    relogio.textContent = `${formatHoras(hora)}:${formatMinutos(
+      minuto
+    )}:${formatSegundos(segundo)}`;
+  }, 1000);
+  pausarTime(contador);
+  zerarTime(contador);
+}
+
+function pausarTime(tempo) {
   pausar.addEventListener("click", () => {
     relogio.classList.add("pausado");
-    clearInterval(para);
+    clearInterval(tempo);
   });
 }
 
-function zerarContador(crono) {
+function zerarTime(tempo) {
   zerar.addEventListener("click", () => {
     relogio.classList.remove("pausado");
-    setTimeout(() => {
-      clearInterval(crono);
-      relogio.textContent = "00:00:00";
-    }, 1000);
+    clearInterval(tempo);
+    relogio.textContent = "00:00:00";
+    segundo = 0;
+    hora = 0;
+    minuto = 0;
   });
+}
+
+function formatSegundos(second) {
+  if (second < 10) {
+    return `0${second}`;
+  } else if (second <= 59) {
+    return second;
+  } else {
+    segundo = 0;
+    minuto++;
+    return formatMinutos(segundo);
+  }
+}
+
+function formatMinutos(minute) {
+  if (minute <= 9) {
+    return `0${minute}`;
+  } else if (minute <= 59) {
+    return minute;
+  } else {
+    minuto = 0;
+    hora++;
+    return formatHoras(minute);
+  }
+}
+
+function formatHoras(hour) {
+  if (hour <= 9) {
+    return `0${hour}`;
+  } else {
+    return hour;
+  }
 }
 */
 
@@ -65,7 +86,7 @@ function relogio() {
       timeZone: "UTC",
     });
   }
-  
+
   const relogio = document.querySelector(".relogio");
   let segundos = 0;
   let timer;
