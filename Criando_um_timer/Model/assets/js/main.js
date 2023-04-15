@@ -1,5 +1,5 @@
-/*
 // Minha Solução
+/*
 const relogio = document.querySelector(".relogio");
 const iniciar = document.querySelector(".iniciar");
 const pausar = document.querySelector(".pausar");
@@ -12,6 +12,8 @@ let contador;
 iniciar.addEventListener("click", () => {
   relogio.classList.remove("pausado");
   clearInterval(contador);
+  pausarTime(contador);
+  zerarTime(contador);
   timer();
 });
 
@@ -22,8 +24,6 @@ function timer() {
       minuto
     )}:${formatSegundos(segundo)}`;
   }, 1000);
-  pausarTime(contador);
-  zerarTime(contador);
 }
 
 function pausarTime(tempo) {
@@ -78,6 +78,7 @@ function formatHoras(hour) {
 */
 
 // SOLUÇÃO PROFESSOR
+
 function relogio() {
   function criaHoraDosSegundos(segundos) {
     const data = new Date(segundos * 1000);
@@ -121,3 +122,4 @@ function relogio() {
 }
 
 relogio();
+
