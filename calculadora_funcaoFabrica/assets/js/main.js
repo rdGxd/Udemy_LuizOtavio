@@ -9,7 +9,7 @@ function Calculadora() {
 
   this.pressionaEnter = () => {
     document.addEventListener("keyup", (e) => {
-      console.log(e)
+      console.log(e);
       if (e.key === "Enter") this.realizaConta();
     });
   };
