@@ -1,5 +1,5 @@
 // Valor por referência
-//                        0          1        2         3         4
+//                   0          1        2         3         4
 // const nomes = ["Eduardo", "Maria", "Joana", "Wallace", "Rosa"];
 // const removido = nomes.shift(); // Remover no inicio
 // const removido = nomes.pop() // Remover no fim

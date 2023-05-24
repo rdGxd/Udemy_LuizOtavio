@@ -8,10 +8,7 @@ const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27];
 /*
 // Uso Original
 // Retorna acumulador, valor, índice e array
-const total = numeros.reduce(
-  (acumulador, valor, indice, array) => (acumulador += valor),
-  0
-);
+const total = numeros.reduce((acumulador, valor, indice, array) => (acumulador += valor),0);
 console.log(total);
 */
 
