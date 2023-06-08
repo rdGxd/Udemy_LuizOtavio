@@ -1,7 +1,6 @@
 class ValidaFormulario {
   constructor() {
     this.formulario = document.querySelector(".formulario");
-
     this.eventos();
   }
 
@@ -43,7 +42,6 @@ class ValidaFormulario {
       valid = false;
       this.createError(senha, "A senha precisa estar entre 6 e 12 caracteres");
     }
-
     return valid;
   }
 
@@ -89,7 +87,6 @@ class ValidaFormulario {
       );
       valid = false;
     }
-
     return valid;
   }
 

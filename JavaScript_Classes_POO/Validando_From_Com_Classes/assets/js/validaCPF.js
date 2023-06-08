@@ -64,8 +64,9 @@ class ValidaCPF {
 
   geraNovoCpf() {
     const cpfSemDigitos = this.cpfLimpo.slice(0, -2);
-    const digito1 = ValidaCPF.geraDigito(cpfSemDigitos); // No lugar de THIS foi usado no nome da Classe, já que o método geraDigito é uma classe estática
-    const digito2 = ValidaCPF.geraDigito(cpfSemDigitos + digito1); // No lugar de THIS foi usado no nome da Classe, já que o método geraDigito é uma classe estática
+    // No lugar de THIS foi usado no nome da Classe, já que o método geraDigito é uma classe estática
+    const digito1 = ValidaCPF.geraDigito(cpfSemDigitos);
+    const digito2 = ValidaCPF.geraDigito(cpfSemDigitos + digito1); 
     this.novoCPF = cpfSemDigitos + digito1 + digito2;
   }
 
