@@ -12,8 +12,8 @@ class ValidaFormulario {
 
   handleSubmit(e) {
     e.preventDefault();
-    const camposValidos = this.camposSaoValidos();
     const senhasValidas = this.senhasSaoValidas();
+    const camposValidos = this.camposSaoValidos();
     if (camposValidos && senhasValidas) {
       alert("Formulário Enviado");
       this.formulario.submit();
