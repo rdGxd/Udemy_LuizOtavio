@@ -6,9 +6,8 @@ const escrever = require("./modules/escrever");
 const ler = require("./modules/ler");
 
 // Escrevendo o arquivo
-/*
-// Array de Objetos
 const pessoas = [
+  //  Criando um Array de Objetos
   { nome: "Rodrigo" },
   { nome: "João" },
   { nome: "Luiz" },
@@ -21,8 +20,7 @@ const pessoas = [
 const json = JSON.stringify(pessoas, "", 2);
 
 // Enviando o caminho e os dados
-escrever(caminhoArquivo, json)
-*/
+escrever(caminhoArquivo, json);
 
 // Lendo o arquivo
 async function leArquivo(caminho) {
