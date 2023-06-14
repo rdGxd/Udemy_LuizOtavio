@@ -1,0 +1,16 @@
+^ posso atualizar tanto a minor quando a patch.
+~ apenas na versão patch.
+
+2.      1.    0
+major minor patch
+
+
+2.1.1
+Patch -> correções de bugs
+apenas correções de bug
+
+2.2.0 ->
+Adicionei novos recursos mas não quebrei a compatibilidade
+
+3.0.0 ->
+Quebrei a compatibilidade com coisas que tem nas versões anteriores
