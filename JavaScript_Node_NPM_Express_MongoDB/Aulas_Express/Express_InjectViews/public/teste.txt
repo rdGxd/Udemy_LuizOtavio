@@ -1,0 +1,4 @@
+qualquer coisa comum
+A PASTA PUBLIC NO CONTA NA HORA DA ROTA
+
+então ficaria assim: http://localhost/3000/assets/css/style.css
