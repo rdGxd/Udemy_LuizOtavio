@@ -37,7 +37,6 @@ const csrf = require("csurf");
 const {
   middlewareGlobal,
   checkCsrfError,
-  csrfMiddleware,
 } = require("./src/middlewares/middleware");
 
 // Utilizando o helmet
@@ -80,7 +79,6 @@ app.use(csrf());
 // Nossos próprios middlewares
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
-app.use(csrfMiddleware);
 
 // Chamando as rotas
 app.use(routes);

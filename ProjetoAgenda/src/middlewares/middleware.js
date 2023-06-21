@@ -1,5 +1,5 @@
 exports.middlewareGlobal = (req, res, next) => {
-  // Se precisar injetar algo em todas as rotas use o "res.locals.NOMEVARIVEL = VALOR"
+  res.locals.csrfToken = req.csrfToken(); // Criando token
   res.locals.errors = req.flash("errors");
   res.locals.success = req.flash("success");
   res.locals.user = req.session.user;
@@ -14,8 +14,11 @@ exports.checkCsrfError = (err, req, res, next) => {
   next();
 };
 
-// Criando token
-exports.csrfMiddleware = (req, res, next) => {
-  res.locals.csrfToken = req.csrfToken();
+exports.loginRequired = (req, res, next) => {
+  if (!req.session.user) {
+    req.flash("errors", "Você precisa fazer login.");
+    req.session.save(() => res.redirect("/"));
+    return;
+  }
   next();
 };

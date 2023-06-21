@@ -11,7 +11,5 @@ const HomeSchema = new mongoose.Schema({
 // Criando o model (NOME, Schema)
 const HomeModel = mongoose.model("Home", HomeSchema);
 
-// class Home {}
-
 // exportando
 module.exports = HomeModel;
