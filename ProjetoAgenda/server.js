@@ -21,18 +21,25 @@ mongoose
 
 // Criando a sessão para identificar um navegador de um cliente a gente salva um cookie
 const session = require("express-session");
+
 // MongoStore para falar onde as sessões vão ser salvas dentro da base de dados
 const MongoStore = require("connect-mongo");
+
 // São flash mensagens, são aquelas mensagens auto-destrutivas, perfeito para mandar msgs de erro ou algum feedback para seu usuário, as msgs são salvas em sessões
 const flash = require("connect-flash");
+
 // São as rotas da aplicação(/home, /contato, /sobre) qualquer coisa que seja referente a rota da aplicação
 const routes = require("./routes");
+
 // Para trabalhar com caminhos
 const path = require("path");
+
 // Recomendação do próprio do express
 const helmet = require("helmet");
+
 // São nossos Tokens para os formulários todos os nossos formulários dentro da aplicação tem que ter um csrfToken isso faz com que nenhum aplicativo ou site externo consiga postar dentro da nossa aplicação
 const csrf = require("csurf");
+
 // Nossos middleware -> são funções que são executadas na rota
 const {
   middlewareGlobal,
