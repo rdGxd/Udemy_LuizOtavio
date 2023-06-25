@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Chamando o INDEX dentro do database, ele vai ser executando automaticamente
 import "./src/database";
 
 import express from "express";
