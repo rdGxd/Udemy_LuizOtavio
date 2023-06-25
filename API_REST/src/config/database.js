@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+// Configuração da Base de dados
 module.exports = {
   dialect: "mariadb",
   host: process.env.DATABASE_HOST,
