@@ -23,5 +23,6 @@ module.exports = {
     "no-console": "off",
     "class-methods-use-this": "off",
     quotes: [2, "double"],
+    "import/first": "off",
   },
 };
