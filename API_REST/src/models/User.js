@@ -48,7 +48,7 @@ export default class User extends Model {
       },
       {
         sequelize,
-      }
+      },
     );
 
     // Adicionando o hook
