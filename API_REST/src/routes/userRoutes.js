@@ -8,20 +8,23 @@ const router = new Router();
 
 export default router;
 
+// NÃO DEVERIA EXISTIR
+
 // INDEX -> listar todos os usuários -> GET
-router.get("/", loginRequired, userController.index);
+router.get("/", userController.index);
+// SHOW -> Mostra um usuário -> GET
+router.get("/:id", userController.show);
+
+// SÃO NECESSÁRIOS
 
 // STORE/CRETE -> Cria um novo usuário -> POST
 router.post("/", userController.store);
 
-// SHOW -> Mostra um usuário -> GET
-router.get("/:id", userController.show);
-
 // UPDATE -> Atualiza um usuário -> PATCH ou PUT
-router.put("/:id", userController.update);
+router.put("/", loginRequired, userController.update);
 
 // DELETE -> Apaga um usuário -> DELETE
-router.delete("/:id", userController.delete);
+router.delete("/", loginRequired, userController.delete);
 
 /*
 Patch quando você altera somente um valor

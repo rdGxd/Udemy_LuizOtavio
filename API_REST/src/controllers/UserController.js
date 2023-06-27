@@ -4,9 +4,8 @@ class UserController {
   // INDEX -> listar todos os usuários
   async index(req, res) {
     try {
-      const users = await User.findAll();
-      console.log("USER ID", req.userId);
-      console.log("USER EMAIL", req.userEmail);
+      // Mostrando quais atributos podem ser exibidos
+      const users = await User.findAll({ attributes: ["id", "nome", "email"] });
       return res.json(users);
     } catch (error) {
       return res.json(null);
@@ -17,7 +16,10 @@ class UserController {
   async store(req, res) {
     try {
       const novoUser = await User.create(req.body);
-      return res.json(novoUser);
+      // Fazendo destruction
+      const { id, nome, email } = novoUser;
+      // Retornando apenas algumas informações do usuário
+      return res.json({ id, nome, email });
     } catch (error) {
       return res.status(400).json({
         erros: error.errors.map((erro) => erro.message),
@@ -29,7 +31,10 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
-      return res.json(user);
+      // Fazendo destruction
+      const { id, nome, email } = user;
+      // Retornando apenas algumas informações do usuário
+      return res.json({ id, nome, email });
     } catch (error) {
       return res.json(null);
     }
@@ -38,13 +43,8 @@ class UserController {
   // UPDATE -> Atualiza um usuário
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ["ID não enviado."],
-        });
-      }
-
-      const user = await User.findByPk(req.params.id);
+      // Pegando o ID do usuário logado
+      const user = await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ["Usuário não existe."],
@@ -52,7 +52,10 @@ class UserController {
       }
 
       const novosDados = await user.update(req.body);
-      return res.json(novosDados);
+      // Fazendo destruction
+      const { id, nome, email } = novosDados;
+      // Retornando apenas algumas informações do usuário
+      return res.json({ id, nome, email });
     } catch (error) {
       return res.status(400).json({
         erros: error.errors.map((err) => err.message),
@@ -63,13 +66,7 @@ class UserController {
   // DELETE -> Apaga um usuário
   async delete(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ["ID não enviado."],
-        });
-      }
-
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ["Usuário não existe."],
@@ -77,7 +74,7 @@ class UserController {
       }
 
       await user.destroy();
-      return res.json(user);
+      return res.json(null);
     } catch (error) {
       return res.status(400).json({
         erros: error.errors.map((err) => err.message),

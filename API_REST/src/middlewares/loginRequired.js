@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
+import User from "../models/User";
 
 // Recebendo o token do usuário e fazendo a verificação
-export default (req, res, next) => {
+export default async (req, res, next) => {
   // Checando se a chave de autorização existe
   const { authorization } = req.headers;
 
@@ -20,6 +21,18 @@ export default (req, res, next) => {
 
     // Fazendo um destruction -> Pegando o id e o email dentro de dados
     const { id, email } = dados;
+
+    // Checando se o id e email corresponde ao mesmo usuário
+    const user = await User.findOne({
+      where: { id, email },
+    });
+
+    // Se o email ou id não corresponde retornamos um erro
+    if (!user) {
+      return res.status(401).json({
+        errors: ["Usuário inválido"],
+      });
+    }
 
     // Vinculando o id e o email a requisição
     req.userId = id;
