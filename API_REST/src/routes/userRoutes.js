@@ -1,12 +1,15 @@
 import { Router } from "express";
 import userController from "../controllers/UserController";
 
+// Importando o middlewares para verificação de token
+import loginRequired from "../middlewares/loginRequired";
+
 const router = new Router();
 
 export default router;
 
 // INDEX -> listar todos os usuários -> GET
-router.get("/", userController.index);
+router.get("/", loginRequired, userController.index);
 
 // STORE/CRETE -> Cria um novo usuário -> POST
 router.post("/", userController.store);

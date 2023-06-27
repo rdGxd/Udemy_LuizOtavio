@@ -51,7 +51,7 @@ export default class User extends Model {
       },
     );
 
-    // Adicionando o hook
+    // Adicionando o hook e criptografando a senha do usuário
     this.addHook("beforeSave", async (user) => {
       if (user.password) {
         user.password_hash = await bcryptjs.hashSync(user.password, 8);
@@ -60,6 +60,7 @@ export default class User extends Model {
     return this;
   }
 
+  // Verificando se a senha é válida
   passwordIsValid(password) {
     return bcryptjs.compare(password, this.password_hash);
   }

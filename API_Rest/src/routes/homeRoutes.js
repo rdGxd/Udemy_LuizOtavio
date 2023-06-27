@@ -3,7 +3,7 @@ import homeController from "../controllers/HomeController";
 
 const router = new Router();
 
-// STORE/CRETE -> Cria um novo usuário -> POST
+// INDEX -> listar todos os usuários -> GET
 router.get("/", homeController.index);
 
 export default router;
