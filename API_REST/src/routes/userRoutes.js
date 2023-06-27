@@ -9,11 +9,12 @@ const router = new Router();
 export default router;
 
 // NÃO DEVERIA EXISTIR
-
+/*
 // INDEX -> listar todos os usuários -> GET
 router.get("/", userController.index);
 // SHOW -> Mostra um usuário -> GET
 router.get("/:id", userController.show);
+*/
 
 // SÃO NECESSÁRIOS
 
