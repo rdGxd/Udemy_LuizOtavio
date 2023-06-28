@@ -16,7 +16,7 @@ export default async (req, res, next) => {
   const [, token] = authorization.split(" ");
 
   try {
-    // Verificando o token e recebendo os dados do usuário
+    // Verificando o token
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
 
     // Fazendo um destruction -> Pegando o id e o email dentro de dados
