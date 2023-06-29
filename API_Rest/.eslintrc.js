@@ -25,5 +25,6 @@ module.exports = {
     quotes: [2, "double"],
     "import/first": "off",
     "no-param-reassign": "off",
+    camelcase: "off",
   },
 };

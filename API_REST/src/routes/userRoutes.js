@@ -19,7 +19,7 @@ router.get("/:id", userController.show);
 // SÃO NECESSÁRIOS
 
 // STORE/CRETE -> Cria um novo usuário -> POST
-router.post("/", userController.store);
+router.post("/", loginRequired, userController.store);
 
 // UPDATE -> Atualiza um usuário -> PATCH ou PUT
 router.put("/", loginRequired, userController.update);
