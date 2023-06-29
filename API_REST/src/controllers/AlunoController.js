@@ -1,8 +1,33 @@
 import Aluno from "../models/Aluno";
+import Foto from "../models/Foto";
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await Aluno.findAll();
+    // Escolhendo os campos que eu quero retornar
+    const alunos = await Aluno.findAll({
+      attributes: [
+        "id",
+        "nome",
+        "sobrenome",
+        "email",
+        "idade",
+        "peso",
+        "altura",
+      ],
+      // Escolhendo a ordem que eu quero retornar
+      order: [
+        // Ordenando os dados do aluno
+        ["id", "DESC"],
+        // Ordenando o Array de fotos
+        [Foto, "id", "DESC"],
+      ],
+      // Retornando as fotos junto com o outros dados
+      include: {
+        model: Foto,
+        // Escolhendo quais dados da Foto eu vou retornar
+        attributes: ["originalname", "filename"],
+      },
+    });
     res.json(alunos);
   }
 
@@ -31,7 +56,30 @@ class AlunoController {
       }
 
       // Buscando o Aluno no banco de dados pelo ID
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await Aluno.findByPk(id, {
+        attributes: [
+          "id",
+          "nome",
+          "sobrenome",
+          "email",
+          "idade",
+          "peso",
+          "altura",
+        ],
+        // Escolhendo a ordem que eu quero retornar
+        order: [
+          // Ordenando os dados do aluno
+          ["id", "DESC"],
+          // Ordenando o Array de fotos
+          [Foto, "id", "DESC"],
+        ],
+        // Retornando as fotos junto com o outros dados
+        include: {
+          model: Foto,
+          // Escolhendo quais dados da Foto eu vou retornar
+          attributes: ["originalname", "filename"],
+        },
+      });
 
       // Checando se o Aluno existe
       if (!aluno) {
@@ -40,10 +88,8 @@ class AlunoController {
         });
       }
 
-      const { email, nome } = aluno;
-
       // Retornando o aluno
-      return res.json({ id, nome, email });
+      return res.json(aluno);
     } catch (error) {
       return res.status(400).json({
         errors: error.errors.map((err) => err.message),
