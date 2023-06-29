@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { resolve } from "path";
 
 dotenv.config();
 
@@ -22,8 +23,11 @@ class App {
 
   // Registrando middlewares
   middlewares() {
+    // A gente pode postar formulários para dentro da nossa aplicação
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    // Configurando arquivos estáticos
+    this.app.use(express.static(resolve(__dirname, "uploads")));
   }
 
   // Registrando rotas

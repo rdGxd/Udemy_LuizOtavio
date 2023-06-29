@@ -25,7 +25,7 @@ class AlunoController {
       include: {
         model: Foto,
         // Escolhendo quais dados da Foto eu vou retornar
-        attributes: ["originalname", "filename"],
+        attributes: ["url", "originalname", "filename"],
       },
     });
     res.json(alunos);
@@ -77,7 +77,7 @@ class AlunoController {
         include: {
           model: Foto,
           // Escolhendo quais dados da Foto eu vou retornar
-          attributes: ["originalname", "filename"],
+          attributes: ["url", "originalname", "filename"],
         },
       });
 

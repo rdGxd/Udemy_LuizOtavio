@@ -19,7 +19,7 @@ export default {
     destination: (req, file, cb) => {
       // O cb(CallBack) é uma função e o primeiro parâmetro seria um erro
       // O Segundo parâmetro é caminho onde eu vou jogar os arquivos
-      cb(null, resolve(__dirname, "..", "..", "uploads"));
+      cb(null, resolve(__dirname, "..", "..", "uploads", "images"));
     },
     // o Date.now() e o random vão dar o nome do arquivo
     // o extname vai extrair o apenas a EXTENSÃO do arquivo original

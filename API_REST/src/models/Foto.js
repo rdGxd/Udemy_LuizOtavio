@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import appConfig from "../config/appConfig";
 // Criando o MODEL Foto
 
 // Passando os campos referente a tabela Fotos
@@ -23,6 +24,13 @@ export default class Foto extends Model {
             notEmpty: {
               msg: "O campo não pode ser vazio",
             },
+          },
+        },
+        // Configurando uma URL virtual
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `${appConfig.url}/images/${this.getDataValue("filename")}`;
           },
         },
       },
