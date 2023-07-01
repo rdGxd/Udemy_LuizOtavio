@@ -31,21 +31,30 @@ export default class Main extends Component {
     // Eu não posso editar o meu estado diretamente
     novaTarefa: '',
     tarefas: [],
+    // Se esse estado for diferente de -1 significa que eu estou editando algum index dom eu array
+    index: -1,
   };
 
+  // Para mudar o estado eu preciso usar o setState() -> ele vai receber um Objeto;
+
+  // Pegando o valor do input
   handleChange = (event) => {
-    // Para mudar o estado eu preciso usar o setState() -> ele vai receber um Objeto;
     this.setState({
       novaTarefa: event.target.value,
     });
   };
 
+  // Enviando tarefas
   handleSubmit = (event) => {
     // Parando o envio do submit
     event.preventDefault();
+
     // Pegando os estados
-    const { tarefas } = this.state;
+    const { tarefas, index } = this.state;
     let { novaTarefa } = this.state;
+
+    // Checando se é um valor vazio
+    if (!novaTarefa) return;
 
     // O .trim() vai eliminar os espaços do começo e do final
     novaTarefa = novaTarefa.trim();
@@ -56,16 +65,45 @@ export default class Main extends Component {
     // Eu não posso editar o meu estado diretamente, então eu copio o Array
     const novasTarefas = [...tarefas];
 
-    // Copiando o Array e adicionando a novaTarefa
+    // Se o index for igual a -1 significa que eu to criando
+    if (index === -1) {
+      // Modificando o estado
+      this.setState({
+        // Substituindo o array de tarefas por novasTarefas e adicionando uma novaTarefa
+        tarefas: [...novasTarefas, novaTarefa],
+        // Limpando o input
+        novaTarefa: '',
+      });
+    } else {
+      // Se o index for diferente de -1 significa que eu to editando
+
+      // Pegando o índice que to editando e setando o novo valor
+      novasTarefas[index] = novaTarefa;
+
+      this.setState({
+        // Adicionando a Tarefa editada a tarefas
+        tarefas: [...novasTarefas],
+        // o index -1 significa que eu já editei
+        index: -1,
+      });
+    }
+  };
+
+  // Editando tarefas
+  handleEdit = (event, index) => {
+    // Pegando as tarefas
+    const { tarefas } = this.state;
+
+    // Falando que o index que eu to recebendo é igual o meu estado index
     this.setState({
-      tarefas: [...novasTarefas, novaTarefa],
+      // Setando o index como o índice que eu estou editando
+      index,
+      // Pegando a tarefa que eu quero editar e jogando no input
+      novaTarefa: tarefas[index],
     });
   };
 
-  handleEdit = (event, index) => {
-    console.log('Edit', index);
-  };
-
+  // Apagando tarefas
   handleDelete = (event, index) => {
     // Pegando as tarefas
     const { tarefas } = this.state;
