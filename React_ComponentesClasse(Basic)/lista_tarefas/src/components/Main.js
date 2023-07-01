@@ -25,8 +25,31 @@ export default class Main extends Component {
   // Criando estados modo 2 Com class fields
   state = {
     // Inicializando o state
+    // Eu não posso editar o meu estado diretamente
     novaTarefa: '',
-    tarefas: ['Fazer café', 'Beber água', 'Estudar'],
+    tarefas: [],
+  };
+
+  handleSubmit = (event) => {
+    // Parando o envio do submit
+    event.preventDefault();
+    // Pegando os estados
+    const { tarefas } = this.state;
+    let { novaTarefa } = this.state;
+
+    // O .trim() vai eliminar os espaços do começo e do final
+    novaTarefa = novaTarefa.trim();
+
+    // Checando se a tarefa já existe: index -1 significa que ele não existe
+    if (tarefas.indexOf(novaTarefa) !== -1) return;
+
+    // Eu não posso editar o meu estado diretamente, então eu copio o Array
+    const novasTarefas = [...tarefas];
+
+    // Copiando o Array e adicionando a novaTarefa
+    this.setState({
+      tarefas: [...novasTarefas, novaTarefa],
+    });
   };
 
   handleChange = (event) => {
@@ -43,7 +66,8 @@ export default class Main extends Component {
       <div className="main">
         <h1>Lista de tarefas</h1>
 
-        <form action="#" className="form">
+        {/* Pegando o evento Submit do form */}
+        <form onSubmit={this.handleSubmit} action="#" className="form">
           {/* Se eu quiser escrever JS eu preciso usar o {} */}
           <input onChange={this.handleChange} type="text" value={novaTarefa} />
           <button type="submit">
@@ -55,10 +79,10 @@ export default class Main extends Component {
           {tarefas.map((tarefa) => (
             <li key={tarefa}>
               {tarefa}
-              <div>
-                <FaEdit className='edit'/>
-                <FaWindowClose className='delete'/>
-              </div>
+              <span>
+                <FaEdit className="edit" />
+                <FaWindowClose className="delete" />
+              </span>
             </li>
           ))}
         </ul>
