@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-// Form
-import { FaPlus } from 'react-icons/fa';
-
-// Tarefas
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
+// Importando os componentes
+import Form from './Form';
+import Tarefas from './Tarefas';
 
 import './Main.css';
 
@@ -149,34 +147,19 @@ export default class Main extends Component {
       <div className="main">
         <h1>Lista de tarefas</h1>
 
-        {/* Pegando o evento Submit do form */}
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          {/* Se eu quiser escrever JS eu preciso usar o {} */}
-          <input onChange={this.handleChange} type="text" value={novaTarefa} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
+        {/* Enviando as props necessárias para o componente Form */}
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
 
-        <ul className="tarefas">
-          {/* Exibindo a tarefa e Pegando o index */}
-          {tarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <span>
-                {/* Pegando o evento do click e do index e enviando ambos */}
-                <FaEdit
-                  onClick={(event) => this.handleEdit(event, index)}
-                  className="edit"
-                />
-                <FaWindowClose
-                  onClick={(event) => this.handleDelete(event, index)}
-                  className="delete"
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
+        {/* Enviando as props necessárias para o componente Tarefas */}
+        <Tarefas
+          tarefas={tarefas}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
