@@ -13,19 +13,7 @@ import './Main.css';
   Componentes que não tem estados são funções normais eles retornam um jsx
 */
 export default class Main extends Component {
-  // Criando estados modo 1
-  /*
-  constructor(props) {
-    super(props);
-    this.state = {
-      // Inicializando o state
-      novaTarefa: '',
-    };
-    // Falando pro React que dentro desse método o THIS é a própria classe
-    this.handleChange = this.handleChange.bind(this);
-  } */
-
-  // Criando estados modo 2 Com class fields
+  // Criando estados
   state = {
     // Inicializando o state
     // Eu não posso editar o meu estado diretamente
@@ -34,6 +22,33 @@ export default class Main extends Component {
     // Se esse estado for diferente de -1 significa que eu estou editando algum index dom eu array
     index: -1,
   };
+
+  // Pegando as tarefas de volta se tiver alguma assim que a página é carregada
+  // componentDidMount() {} ele é executado uma vez assim que o componente é montado
+  componentDidMount() {
+    // Pegando do localStorage as tarefas e transformando em JSON
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+
+    // Checando se existe tarefas salvas
+    if (!tarefas) return;
+
+    // Adicionando as tarefas
+    this.setState({ tarefas });
+  }
+
+  // Salvando Tarefas no localStorage do navegador, toda vez que o componente atualizar
+  // componentDidUpdate é executado toda vez que algum componente atualizar
+  // o prevState salva o estado anterior
+  componentDidUpdate(prevProps, prevState) {
+    // Pegando as tarefas
+    const { tarefas } = this.state;
+
+    // Checando se a tarefa mudo
+    if (tarefas === prevState.tarefas) return;
+
+    // Salvando no navegador -> Transformando em string antes
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
 
   // Para mudar o estado eu preciso usar o setState() -> ele vai receber um Objeto;
 
