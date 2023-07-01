@@ -8,7 +8,10 @@ import { FaEdit, FaWindowClose } from 'react-icons/fa';
 
 import './Main.css';
 
-// Componentes que são classes precisam do método render()
+/*
+  Componentes que são classes precisam do método render()
+  Componentes que não tem estados são funções normais eles retornam um jsx
+*/
 export default class Main extends Component {
   // Criando estados modo 1
   /*
@@ -28,6 +31,13 @@ export default class Main extends Component {
     // Eu não posso editar o meu estado diretamente
     novaTarefa: '',
     tarefas: [],
+  };
+
+  handleChange = (event) => {
+    // Para mudar o estado eu preciso usar o setState() -> ele vai receber um Objeto;
+    this.setState({
+      novaTarefa: event.target.value,
+    });
   };
 
   handleSubmit = (event) => {
@@ -52,16 +62,36 @@ export default class Main extends Component {
     });
   };
 
-  handleChange = (event) => {
-    // Para mudar o estado eu preciso usar o setState() -> ele vai receber um Objeto;
+  handleEdit = (event, index) => {
+    console.log('Edit', index);
+  };
+
+  handleDelete = (event, index) => {
+    // Pegando as tarefas
+    const { tarefas } = this.state;
+
+    // Copiando as tarefas para um novo Array
+    const novasTarefas = [...tarefas];
+
+    // Eliminando um elemento
+    novasTarefas.splice(index, 1);
+
+    // Adicionando as novasTarefas em tarefas
     this.setState({
-      novaTarefa: event.target.value,
+      tarefas: [...novasTarefas],
     });
   };
 
+  // render() é necessário por que isso é uma Classe
   render() {
+    // Pegando os estados
     const { novaTarefa, tarefas } = this.state;
 
+    /*
+    Se eu quiser retornar mais de 1 elemento preciso criar 1 ELEMENTO PAI para envolver os outros elementos.
+    Se eu não quiser usar uma <div></div> eu posso usar um fragmento <> </>
+    Lembre de colocar tudo dentro de um RETURN()
+    */
     return (
       <div className="main">
         <h1>Lista de tarefas</h1>
@@ -76,12 +106,20 @@ export default class Main extends Component {
         </form>
 
         <ul className="tarefas">
-          {tarefas.map((tarefa) => (
+          {/* Exibindo a tarefa e Pegando o index */}
+          {tarefas.map((tarefa, index) => (
             <li key={tarefa}>
               {tarefa}
               <span>
-                <FaEdit className="edit" />
-                <FaWindowClose className="delete" />
+                {/* Pegando o evento do click e do index e enviando ambos */}
+                <FaEdit
+                  onClick={(event) => this.handleEdit(event, index)}
+                  className="edit"
+                />
+                <FaWindowClose
+                  onClick={(event) => this.handleDelete(event, index)}
+                  className="delete"
+                />
               </span>
             </li>
           ))}
