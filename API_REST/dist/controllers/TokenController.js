@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import User from "../models/User";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _jsonwebtoken = require('jsonwebtoken'); var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 // Gerando o token do usuário
 class TokenController {
@@ -14,7 +14,7 @@ class TokenController {
     }
 
     // Verificando se o email do usuário já existe
-    const user = await User.findOne({ where: { email } });
+    const user = await _User2.default.findOne({ where: { email } });
 
     // Verificando se o usuário já existe
     if (!user) {
@@ -34,7 +34,7 @@ class TokenController {
     const { id } = user;
 
     // Criando um Token, o payload são os dados que a gente quer recuperar depois
-    const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
+    const token = _jsonwebtoken2.default.sign({ id, email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
@@ -43,4 +43,4 @@ class TokenController {
   }
 }
 
-export default new TokenController();
+exports. default = new TokenController();
