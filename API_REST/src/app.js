@@ -6,15 +6,15 @@ dotenv.config();
 // Chamando o INDEX dentro do database, ele vai ser executando automaticamente
 import "./database";
 
-import express from "express";
 import cors from "cors";
+import express from "express";
 import helmet from "helmet";
 
-import homeRoutes from "./routes/homeRoutes";
-import userRoutes from "./routes/userRoutes";
-import tokenRoutes from "./routes/tokenRoutes";
 import alunoRoutes from "./routes/alunoRoutes";
 import fotoRoutes from "./routes/fotoRoutes";
+import homeRoutes from "./routes/homeRoutes";
+import tokenRoutes from "./routes/tokenRoutes";
+import userRoutes from "./routes/userRoutes";
 
 // Configurando o CORS() -> Liberando apenas para alguns domínios
 const whiteList = [

@@ -6,15 +6,15 @@ _dotenv2.default.config();
 // Chamando o INDEX dentro do database, ele vai ser executando automaticamente
 require('./database');
 
-var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
+var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 
-var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
-var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
-var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
+var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
+var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
+var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
 
 // Configurando o CORS() -> Liberando apenas para alguns domínios
 const whiteList = [
