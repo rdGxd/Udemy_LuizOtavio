@@ -14,7 +14,7 @@ export default function Routes() {
       {/* Switch serve para garantir que apenas uma rota seja chamada por vez */}
       <Switch>
         {/* Escolhendo qual o caminho e componente que vai ser renderizado */}
-        <MyRoute exact path="/" component={Login} isClosed />
+        <MyRoute exact path="/" component={Login} />
         <MyRoute path="*" component={Page404} />
       </Switch>
     </>
