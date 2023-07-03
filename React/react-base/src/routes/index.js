@@ -8,12 +8,12 @@ import Page404 from "../pages/Page404";
 
 export default function Routes() {
   return (
-    // Toda as minha rotas tem que estar dentro de BrowserRouter
+    // Todas as minha rotas tem que estar dentro de Router
     <>
       {/* Switch serve para garantir que apenas uma rota seja chamada por vez */}
       <Switch>
         {/* Escolhendo qual o caminho e componente que vai ser renderizado */}
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
         <Route path="*" component={Page404} />
       </Switch>
     </>

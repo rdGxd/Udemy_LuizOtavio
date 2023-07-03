@@ -7,7 +7,7 @@ import { Nav } from "./styled";
 export default function Header() {
   return (
     <Nav>
-      <Link to="google.com.br">
+      <Link to="/">
         <FaHome size={24} />
       </Link>
       <Link to="/login">
