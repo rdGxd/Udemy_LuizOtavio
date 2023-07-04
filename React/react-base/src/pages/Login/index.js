@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
 
     // Ação vai descrever para o Redux o que ele tem que fazer -> vai ter um tipo e esse tipo vai falar pro reduce
-    dispatch(exampleActions.clickButton());
+    dispatch(exampleActions.clickButtonRequest()); // Disparando a action Request
   };
 
   return (
