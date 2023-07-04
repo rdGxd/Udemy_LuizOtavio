@@ -8,7 +8,7 @@ const initialState = {
 
 // SEMPRE RETORNE UM NOVO ESTADO OU O ESTADO ATUAL
 
-const reducer = (state = initialState, action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case types.BOTAO_CLICADO_SUCCESS: {
       console.log("Sucesso");
@@ -32,5 +32,3 @@ const reducer = (state = initialState, action = {}) => {
     }
   }
 };
-
-export default reducer;

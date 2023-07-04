@@ -7,10 +7,10 @@ import * as actions from "./actions";
 import * as types from "../types";
 
 const requisicao = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     setTimeout(() => {
-      reject();
-    }, 2000);
+      resolve();
+    }, 600);
   });
 
 // O Saga utiliza funções geradoras
@@ -19,6 +19,7 @@ function* exampleRequest() {
     // Passando a referencia se tiver parâmetros coloque uma ',' ex: call(requisicao, ParamA, paramB)
     yield call(requisicao); // Basicamente um await
     yield put(actions.clickButtonSuccess()); // Disparando a ação de sucesso
+    toast.success("Deu Bom"); // Enviando mensagem de Sucesso
   } catch (error) {
     toast.error("Deu erro"); // Enviando mensagem de erro
     yield put(actions.clickButtonFailure()); // Disparando a ação de erro
