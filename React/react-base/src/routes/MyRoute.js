@@ -23,7 +23,7 @@ export default function MyRoute({ component: Component, isClosed, ...rest }) {
   return <Route {...rest} component={Component} />;
 }
 
-// Definindo a rota aberta como padrão
+// Definindo que toda rota é aberta como padrão
 MyRoute.defaultProps = {
   isClosed: false,
 };
