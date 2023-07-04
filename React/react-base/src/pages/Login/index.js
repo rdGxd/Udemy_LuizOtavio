@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-// Importando o CSS
+// Meus imports
 import { Container } from "../../styles/GlobalStyles";
 import { Title, Paragrafo } from "./styled";
+import * as exampleActions from "../../store/modules/example/actions";
 
 export default function Login() {
   // Disparador -> pode disparar quantas ações eu quiser
@@ -13,9 +14,7 @@ export default function Login() {
     e.preventDefault();
 
     // Ação vai descrever para o Redux o que ele tem que fazer -> vai ter um tipo e esse tipo vai falar pro reduce
-    dispatch({
-      type: "BOTAO_CLICADO",
-    });
+    dispatch(exampleActions.clickButton());
   };
 
   return (
