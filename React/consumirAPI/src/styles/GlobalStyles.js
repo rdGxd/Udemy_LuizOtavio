@@ -29,6 +29,11 @@ export default createGlobalStyle`
     padding: 10px 20px;
     border-radius: 4px;
     font-weight: 700;
+    transition: all 300ms;
+
+    &:hover {
+      filter: brightness(75%);
+    }
   }
 
   a {
@@ -53,10 +58,35 @@ export default createGlobalStyle`
 
 // Esse componente vai ser o main
 export const Container = styled.section`
-  max-width: 360px;
+  max-width: 480px;
   background: #fff;
   margin: 30px auto;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  input {
+    height: 40px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+
+    &:focus {
+      border: 1px solid ${colors.primaryColor};
+    }
+  }
 `;
