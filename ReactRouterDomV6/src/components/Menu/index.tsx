@@ -25,6 +25,10 @@ export const Menu = () => {
           {/* Especificando qual post eu quero */}
           <Link to="/posts/10">Posts 10</Link>
         </li>
+        <li>
+          {/* Especificando qual post eu quero */}
+          <Link to="/redirect">Redirect</Link>
+        </li>
       </ul>
     </nav>
   );

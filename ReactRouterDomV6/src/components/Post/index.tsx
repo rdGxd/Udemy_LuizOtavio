@@ -19,7 +19,7 @@ export const Post = () => {
   return (
     <div>
       <h1>
-        Post {`Para: ${id || ""}`} {`QS: ${qs}`}
+        Post {`Para: ${id || ""}`} {`QS: ${qs.get("page") || ""}`}
       </h1>
     </div>
   );
