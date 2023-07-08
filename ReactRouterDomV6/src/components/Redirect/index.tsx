@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import "./style.css";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 export const Redirect = () => {
   const [time, setTime] = useState(3);

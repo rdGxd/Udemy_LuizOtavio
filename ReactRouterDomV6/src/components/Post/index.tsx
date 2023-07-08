@@ -1,26 +1,18 @@
-import { useParams, useSearchParams } from "react-router-dom";
 import "./style.css";
 
+// ESTE COMPONENTE TA SENDO CARREGANDO DENTRO DE POSTS USANDO OUTLET
+// SE VOCÊ QUISER ATUALIZAR SOMENTE UM TRECHO
+// ROTA ANINHADA
+
 export const Post = () => {
-  // Pegando o ID direto dos parâmetros
-  const { id } = useParams();
-
-  // Pegando Parâmetros direto da URL
-  const [qs] = useSearchParams();
-  /*
-  const params = new URLSearchParams();
-  params.append("page", "valor1");
-  params.append("page", "10");
-  const url = `https://www.example.com/?${params.toString()}`;
-  console.log(url);
-  */
-  // Se quiser pega apenas UM PARÂMETRO utilize o .get("EXEMPLO")
-
   return (
     <div>
-      <h1>
-        Post {`Para: ${id || ""}`} {`QS: ${qs.get("page") || ""}`}
-      </h1>
+      <h1>Post</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nulla,
+        ea ad placeat quaerat mollitia consectetur suscipit deserunt saepe
+        aspernatur enim totam rem, ipsum magnam hic libero fugit illo incidunt!
+      </p>
     </div>
   );
 };

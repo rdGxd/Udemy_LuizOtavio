@@ -1,5 +1,5 @@
-import "./style.css";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 // Quando utiliza o <a></a> você recarrega toda a página -> Se você tiver algum estado que tivesse carregando de um lado para o outro você ira perder -> ContextManager
 
