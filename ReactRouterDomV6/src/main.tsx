@@ -6,6 +6,7 @@ import "./styles/global.css";
 import { Home } from "./components/Home";
 import { About } from "./components/About";
 import { Menu } from "./components/Menu";
+import { Post } from "./components/Post";
 
 // Você precisa de um router para colocar suas rotas dentro dele
 // O ROUTER SERIA UM ROTEADOR
@@ -22,6 +23,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         {/* O element é o componente que eu quero que seja renderizado */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/posts" element={<Post />} />
+        {/* Pegando um post especifico utilizando o parâmetro ID (UTILIZANDO ESPECIFICIDADE) */}
+        <Route path="/posts/:id" element={<Post />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
