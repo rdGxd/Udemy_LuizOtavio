@@ -18,7 +18,14 @@ export const Redirect = () => {
 
     if (time <= 0) {
       // Enviando o usuário para a HOME
-      navigate("/");
+      navigate("/about", {
+        /* Quando você redireciona se o usuário der um voltar no navegador vai cair na página anterior e vai se redirecionada dnv quando você usa o replace você troca esse URL -> você perde página que redireciono */
+        // replace: Quando voce não quer que esse LINk fique no HISTORY depois do redirect
+
+        // Enviando estado via react-router-dom
+        // Enviando o estado para a página redirecionada
+        state: `This is the state from REDIRECT: ${Math.random()}`,
+      });
     }
 
     // Limpando os lixos da página

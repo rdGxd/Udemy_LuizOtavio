@@ -15,7 +15,9 @@ export const Menu = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          {/* enviado estado via react-router-dom */}
+          {/* Quando eu clico no link eu to enviando o estado */}
+          <Link to="/about" state={"This is state from ABOUT"}>About</Link>
         </li>
         <li>
           {/* Pegando todos os posts */}
@@ -26,7 +28,6 @@ export const Menu = () => {
           <Link to="/posts/10">Posts 10</Link>
         </li>
         <li>
-          {/* Especificando qual post eu quero */}
           <Link to="/redirect">Redirect</Link>
         </li>
       </ul>
