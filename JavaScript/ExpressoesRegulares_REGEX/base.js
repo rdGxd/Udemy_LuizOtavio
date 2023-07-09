@@ -17,4 +17,6 @@ const arquivos = [
   "lista de compras.txt",
 ];
 
-module.exports = { texto, arquivos };
+const html = "<p>Olá mundo</p>   <p>Olá de novo</p>  <div>Sou a div</div>";
+
+module.exports = { texto, arquivos, html };
